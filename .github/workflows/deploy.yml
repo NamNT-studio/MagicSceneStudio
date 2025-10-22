@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -21,11 +18,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      # 🧹 Dọn sạch cache cũ nếu Rollup lỗi
+      - name: Clean install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Build project
+        env:
+          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
         run: npm run build
 
       - name: Deploy to GitHub Pages
