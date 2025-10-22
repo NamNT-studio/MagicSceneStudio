@@ -6,7 +6,7 @@ if (!API_KEY) {
   throw new Error("API_KEY environment variable not set");
 }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+const ai = new GoogleGenAI(AIzaSyAgkcOEvket13u72_a8bq7Gd_dxz_CEIRY);
 
 export async function editImageWithGemini(
   base64Image: string,
