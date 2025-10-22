@@ -1,12 +1,14 @@
 import { GoogleGenAI, Modality } from "@google/genai";
 import type { ImageState } from "../types";
 
-const API_KEY = process.env.API_KEY;
+// ✅ Dòng này sửa lại:
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 if (!API_KEY) {
-  throw new Error("API_KEY environment variable not set");
+  throw new Error("VITE_API_KEY environment variable not set");
 }
 
-const ai = new GoogleGenAI(AIzaSyAgkcOEvket13u72_a8bq7Gd_dxz_CEIRY);
+const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 export async function editImageWithGemini(
   base64Image: string,
