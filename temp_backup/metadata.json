@@ -1,0 +1,5 @@
+{
+  "name": "MagicScene Studio",
+  "description": "An AI-powered photo editing application that allows users to upload their photos and perform advanced image editing with high fidelity facial preservation, background replacement, object insertion, and artistic style filters.",
+  "requestFramePermissions": []
+}
